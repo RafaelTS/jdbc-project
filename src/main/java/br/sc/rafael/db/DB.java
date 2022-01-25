@@ -15,7 +15,7 @@ public class DB {
         if (conn == null) {
             try{
                 Properties properties = loadProperties();
-                String url = properties.getProperty("spring.datasource.url");
+                String url = properties.getProperty("dburl");
                 conn = DriverManager.getConnection(url, properties);
             }
             catch (SQLException e) {
@@ -37,7 +37,7 @@ public class DB {
     }
 
     private static Properties loadProperties() {
-        try (FileInputStream fileInputStream = new FileInputStream("/home/rateixeira/Documents/development/jdbc-project/src/main/resources/application.properties")){
+        try (FileInputStream fileInputStream = new FileInputStream("db.properties")){
             Properties properties = new Properties();
             properties.load(fileInputStream);
             return properties;
